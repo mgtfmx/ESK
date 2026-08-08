@@ -1,0 +1,246 @@
+/* General Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f7f4; /* Light, warm background */
+    scroll-behavior: smooth;
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    color: #042069; /* UPDATED: Deep Navy for all main headings */
+}
+
+/* Header and Navigation */
+header {
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #5d4037;
+    margin-left: 25px;
+    font-weight: 500;
+    padding: 5px 0;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #bcaaa4; /* Lighter tan/grey on hover */
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://picsum.photos/1600/900?random=1'); /* Placeholder image */
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    padding: 150px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content h2 {
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    color: #fff; /* Keep this white since it's on a dark image overlay */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #5d4037;
+    color: #fff;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 700;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+    background-color: #795548;
+    transform: translateY(-2px);
+}
+
+/* Section Styling */
+section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+section:nth-child(even) {
+    background-color: #e8e5e1; /* Alternating section background */
+}
+
+section h3 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+}
+
+/* About Section */
+.about .container {
+    max-width: 900px;
+}
+
+.about p {
+    margin-bottom: 50px;
+    font-size: 1.1em;
+    color: #555;
+}
+
+.about-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.feature {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #bcaaa4;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    text-align: left;
+}
+
+.feature h4 {
+    color: #042069; /* UPDATED: Feature sub-headings also set to Deep Navy */
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+/* Events Section */
+.events .placeholder-text {
+    font-style: italic;
+    color: #777;
+    font-size: 1.1em;
+}
+
+/* Contact Section (Form) */
+.contact {
+    background-color: #fff;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 700;
+    color: #042069; /* UPDATED: Form labels set to Deep Navy */
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.submit-btn {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Footer */
+footer {
+    background-color: #5d4037;
+    color: #fff;
+    padding: 30px 0;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+/* Simple Responsive Adjustment */
+@media (max-width: 768px) {
+    .hero-content h2 {
+        font-size: 2.5em;
+    }
+
+    header .container {
+        flex-direction: column;
+    }
+
+    nav ul {
+        margin-top: 15px;
+    }
+
+    nav ul li a {
+        margin: 0 10px;
+    }
+
+    .about-grid {
+        flex-direction: column;
+    }
+}

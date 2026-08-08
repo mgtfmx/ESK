@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUDEX.club</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS EMBEDDED BELOW */
+
+        /* General Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Color Variables for easy theme switching */
+        :root {
+            --color-primary-dark: #042069; /* Deep Navy Blue (BiBottom) */
+            --color-primary-light: #5279b9; /* A light, desaturated blue for hovers/borders */
+            --gradient-main: linear-gradient(145deg, #B00B69, #420A55, #042069); /* Blue Gradient */
+            --gradient-hover: linear-gradient(145deg, #a40a61, #3c094e, #031e60); /* Slightly darker for hover */
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f7f4; /* Light, warm background (kept) */
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--color-primary-dark); /* Deep Navy Blue */
+        }
+
+        /* Header and Navigation */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--color-primary-dark); /* CHANGED from brown to Deep Navy */
+            margin-left: 25px;
+            font-weight: 500;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--color-primary-light); /* CHANGED from tan/grey to light blue */
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://picsum.photos/1600/900?random=1'); /* Placeholder image */
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            padding: 150px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content h2 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            color: #fff; 
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            /* CHANGED from brown solid color to blue gradient */
+            background: var(--gradient-main);
+            color: #fff;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: background 0.3s, transform 0.2s;
+            border: none; /* Ensure no default border interferes */
+        }
+
+        .btn:hover {
+            /* CHANGED to a slightly darker gradient on hover */
+            background: var(--gradient-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        section:nth-child(even) {
+            background-color: #e8e5e1; /* Alternating section background (Kept neutral) */
+        }
+
+        section h3 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+        }
+
+        /* About Section */
+        .about .container {
+            max-width: 900px;
+        }
+
+        .about p {
+            margin-bottom: 50px;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .about-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature {
+            flex: 1;
+            padding: 20px;
+            /* CHANGED border from tan/grey to light blue */
+            border: 1px solid var(--color-primary-light); 
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            text-align: left;
+        }
+
+        .feature h4 {
+            color: var(--color-primary-dark); /* Deep Navy Blue */
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+
+        /* Events Section */
+        .events .placeholder-text {
+            font-style: italic;
+            color: #777;
+            font-size: 1.1em;
+        }
+
+        /* Contact Section (Form) */
+        .contact {
+            background-color: #fff;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 700;
+            color: var(--color-primary-dark); /* Deep Navy Blue */
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            /* Uses the button styles defined above */
+        }
+
+        /* Footer */
+        footer {
+            /* CHANGED from brown solid color to blue gradient */
+            background: var(--gradient-main);
+            color: #fff;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* Simple Responsive Adjustment */
+        @media (max-width: 768px) {
+            .hero-content h2 {
+                font-size: 2.5em;
+            }
+
+            header .container {
+                flex-direction: column;
+            }
+
+            nav ul {
+                margin-top: 15px;
+            }
+
+            nav ul li a {
+                margin: 0 10px;
+            }
+
+            .about-grid {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1 class="logo">LUDEX.club</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Cultivating Connections, Celebrating Culture.</h2>
+            <p>A private sanctuary for enlightened conversation and refined leisure.</p>
+            <a href="#contact" class="btn">Join Our Community</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h3>Our Ethos</h3>
+            <p>Established in 2025, The Gilded Quill was founded on the principle that the highest forms of artistry and thought thrive best in a curated, supportive environment. We host exclusive workshops, literary evenings, and philanthropic galas, fostering a genuine network among leaders and innovators.</p>
+            <div class="about-grid">
+                <div class="feature">
+                    <h4>The Library</h4>
+                    <p>A quiet space featuring rare books and comfortable seating for contemplation.</p>
+                </div>
+                <div class="feature">
+                    <h4>The Salon</h4>
+                    <p>Our main event space, perfect for debates, live music, and elegant receptions.</p>
+                </div>
+                <div class="feature">
+                    <h4>Membership</h4>
+                    <p>Vetted membership ensures a community dedicated to mutual respect and intellectual curiosity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="events" class="events">
+        <div class="container">
+            <h3>Upcoming Events</h3>
+            <p class="placeholder-text">Details on our next literary reading and winter gala will be posted soon. Members receive priority access.</p>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h3>Inquire About Membership</h3>
+            <form action="#" method="POST" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Inquiry:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn submit-btn">Send Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 The Gilded Quill Social Club. All Rights Reserved.</p>
+            <p>123 Club Lane, Downtown Metropolis</p>
+        </div>
+    </footer>
+
+</body>
+</html>

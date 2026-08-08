@@ -1,0 +1,12 @@
+<!--
+<?php
+# echo "{"Peter":35,"Ben":37,"Joe":43}";
+$age = array("Peter"=>35, "Ben"=>37, "Joe"=>43);
+
+echo json_encode($age);
+?>
+-->
+{"id":"435","author":"chancema","width":1200,"height":800,"url":"https://unsplash.com/photos/7bc0i0t4pRo","download_url":"https://picsum.photos/id/435/1200/800"}
+<!--
+{"Peter":35,"Ben":37,"Joe":43}
+-->

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Header/Footer, Responsive Body</title>
+    <!-- Include Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Small custom style for a sticky footer layout */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex-grow: 1;
+        }
+        /* Simple spinner */
+        .loader {
+            border: 4px solid #f3f3f3; /* Light grey */
+            border-top: 4px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            animation: spin 1s linear infinite;
+            margin: 1rem auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans">
+
+    <!-- Static Top Menu (Header) -->
+    <header class="bg-blue-800 text-white p-4 shadow-md w-full">
+        <!-- ... existing header content ... -->
+        <nav class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold">MySite</a>
+            <!-- Responsive Menu (Hamburger for mobile, links for desktop) -->
+            <button id="menu-btn" class="md:hidden p-2 rounded-lg hover:bg-blue-700">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+            <div id="menu-links" class="hidden md:flex space-x-4">
+                <a href="#" class="px-3 py-2 rounded-lg hover:bg-blue-700">Home</a>
+                <a href="#" class="px-3 py-2 rounded-lg hover:bg-blue-700">Bioinformatics</a>
+                <a href="#" class="px-3 py-2 rounded-lg hover:bg-blue-700">Genetics</a>
+                <a href="#" class="px-3 py-2 rounded-lg hover:bg-blue-700">Pharmacology</a>
+                <a href="#" class="px-3 py-2 rounded-lg hover:bg-blue-700">Contact</a>
+            </div>
+        </nav>
+        
+        <!-- Mobile Menu (hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden mt-2 space-y-1">
+            <a href="#" class="block px-3 py-2 rounded-lg hover:bg-blue-700">Home</a>
+            <a href="#" class="block px-3 py-2 rounded-lg hover:bg-blue-700">Bioinformatics</a>
+            <a href="#" class="block px-3 py-2 rounded-lg hover:bg-blue-700">Genetics</a>
+            <a href="#" class="block px-3 py-2 rounded-lg hover:bg-blue-700">Pharmacology</a>
+            <a href="#" class="block px-3 py-2 rounded-lg hover:bg-blue-700">Contact</a>
+        </div>
+    </header>
+
+    <!-- Responsive Body Content -->
+    <main class="container mx-auto p-6">
+        <h1 class="text-4xl font-bold mb-6 text-blue-900">Welcome to the Main Content Area</h1>
+        <p class="mb-4">This is the responsive body of your website. It will grow to fill the available space between the header and footer. The content here will also adapt to different screen sizes.</p>
+
+        <!-- Example Grid Layout -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold mb-3">Computer Science</h2>
+                <p>Exploring algorithms, data structures, and the computational models that drive modern technology and research.</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold mb-3">Psychology</h2>
+                <p>Understanding the human mind, behavior, and the cognitive processes that shape our experience.</p>
+            </div>
+            <!-- Card 3: Teaching (Now with Gemini) -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold mb-3">Teaching</h2>
+                <p class="mb-4">Enter a topic below to generate creative lesson plan ideas using AI.</p>
+                <div class="flex flex-col space-y-3">
+                    <input type="text" id="lesson-topic" placeholder="e.g., 'The Water Cycle'" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button id="generate-lesson-btn" class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-colors">
+                        ✨ Generate Lesson Ideas
+                    </button>
+                </div>
+                <!-- Result area for lesson ideas -->
+                <div id="lesson-result" class="mt-4 p-3 bg-gray-50 rounded-lg min-h-[50px]"></div>
+            </div>
+        </div>
+
+        <div class="mt-8 bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="text-3xl font-semibold mb-4">A Deeper Dive</h2>
+            <p id="deeper-dive-text">Here you can add more detailed content, such as articles, research papers, or interactive elements. The `container mx-auto` class ensures this content remains centered and has a maximum width, which is great for readability on large screens, while `p-6` provides ample padding. On mobile, it will stretch to fill the width, maintaining good usability.</p>
+            
+            <!-- Gemini Feature: Related Topics -->
+            <div class="mt-6">
+                <button id="related-topics-btn" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition-colors">
+                    ✨ Suggest Related Topics
+                </button>
+                <!-- Result area for related topics -->
+                <div id="related-topics-result" class="mt-4 p-3 bg-gray-50 rounded-lg min-h-[50px]"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Static Footer -->
+    <footer class="bg-gray-800 text-gray-300 p-6 w-full mt-auto">
+        <!-- ... existing footer content ... -->
+        <div class="container mx-auto text-center">
+            <p>&copy; 2025 Your Name / Your Organization. All rights reserved.</p>
+            <div class="flex justify-center space-x-4 mt-2">
+                <a href="#" class="hover:text-white">Privacy Policy</a>
+                <a href="#" class="hover:text-white">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // --- Gemini API Integration ---
+
+        /**
+         * Fetches data from the Gemini API with exponential backoff.
+         * @param {string} url - The API endpoint.
+         * @param {object} options - The fetch options (method, headers, body).
+         * @param {number} retries - Number of retries left.
+         * @param {number} delay - Current delay in ms.
+         * @returns {Promise<object>} - The JSON response from the API.
+         */
+        async function fetchWithBackoff(url, options, retries = 3, delay = 1000) {
+            try {
+                const response = await fetch(url, options);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return await response.json();
+            } catch (error) {
+                if (retries > 0) {
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    return fetchWithBackoff(url, options, retries - 1, delay * 2);
+                } else {
+                    throw new Error(`Failed to fetch from API after several retries: ${error.message}`);
+                }
+            }
+        }
+
+        /**
+         * Calls the Gemini API to generate content.
+         * @param {string} systemPrompt - The system instruction for the model.
+         * @param {string} userQuery - The user's prompt.
+         * @param {HTMLElement} resultElement - The element to display the result in.
+         */
+        async function callGemini(systemPrompt, userQuery, resultElement) {
+            // Show loading spinner
+            resultElement.innerHTML = '<div class="loader"></div>';
+
+            const apiKey = ""; // API key is handled by the environment
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                systemInstruction: {
+                    parts: [{ text: systemPrompt }]
+                },
+            };
+
+            const fetchOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            };
+
+            try {
+                const result = await fetchWithBackoff(apiUrl, fetchOptions);
+                const candidate = result.candidates?.[0];
+
+                if (candidate && candidate.content?.parts?.[0]?.text) {
+                    // Format text slightly for better HTML rendering (e.g., newlines)
+                    const formattedText = candidate.content.parts[0].text
+                        .replace(/\n/g, '<br>')
+                        .replace(/\* (.*?)(<br>|$)/g, '<li class="ml-4 list-disc">$1</li>'); // Basic list formatting
+                    resultElement.innerHTML = `<ul class="space-y-1">${formattedText}</ul>`;
+                } else {
+                    throw new Error("No valid content received from API.");
+                }
+            } catch (error) {
+                console.error("Error calling Gemini API:", error);
+                resultElement.innerHTML = `<p class="text-red-600">Error: Could not retrieve data. Please try again later.</p>`;
+            }
+        }
+
+        // --- Event Listeners ---
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const generateLessonBtn = document.getElementById('generate-lesson-btn');
+            const lessonTopicInput = document.getElementById('lesson-topic');
+            const lessonResultEl = document.getElementById('lesson-result');
+
+            generateLessonBtn.addEventListener('click', () => {
+                const topic = lessonTopicInput.value;
+                if (!topic) {
+                    lessonResultEl.innerHTML = `<p class="text-yellow-700">Please enter a topic.</p>`;
+                    return;
+                }
+
+                const systemPrompt = "You are an expert educator. Generate 3-5 creative, brief lesson plan ideas for the following topic. Format them as a bulleted list.";
+                callGemini(systemPrompt, topic, lessonResultEl);
+            });
+
+            const relatedTopicsBtn = document.getElementById('related-topics-btn');
+            const deeperDiveTextEl = document.getElementById('deeper-dive-text');
+            const relatedTopicsResultEl = document.getElementById('related-topics-result');
+
+            relatedTopicsBtn.addEventListener('click', () => {
+                const text = deeperDiveTextEl.innerText;
+                const systemPrompt = "You are a helpful research assistant. Based on the following text, suggest 5 related topics or concepts for further exploration. Format them as a numbered list.";
+                callGemini(systemPrompt, text, relatedTopicsResultEl);
+            });
+        });
+    </script>
+
+</body>
+</html>
+
